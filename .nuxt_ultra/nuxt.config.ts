@@ -1,8 +1,13 @@
+// @ts-nocheck
+%%i18nImport%%
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
   modules: [
     '@nuxt/ui',
+    %%i18nModule%%
+    %%supabaseModule%%
+    %%seoModule%%
     '@nuxt/eslint',
   ],
 
@@ -12,10 +17,14 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
-      siteName: process.env.NUXT_SITE_NAME,
+      siteUrl: '%%siteUrl%%',
+      siteName: '%%siteName%%',
     },
+    %%R2%%
+    %%supabaseKeys%%
   },
+
+  %%i18nConfig%%
 
   compatibilityDate: '2025-11-02',
 
@@ -26,6 +35,8 @@ export default defineNuxtConfig({
         '/',
       ],
     },
+    %%storageConfig%%
+    %%cloudflareConfig%%
   },
 
   eslint: {
@@ -33,8 +44,8 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  
+  %%supabaseConfig%%
 
-  ogImage: {
-    zeroRuntime: true,
-  },
+  %%ogImage%%
 })

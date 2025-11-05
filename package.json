@@ -1,30 +1,28 @@
 {
-  "name": "nuxt-ultra",
+  "name": "nuxt-ultra-supabase",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "dev": "nuxt dev --dotenv .env.local",
+    "build": "nuxt build --dotenv .env.production",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare --dotenv .env.production",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "upnuxt": "npx nuxt upgrade",
+    "setup": "node setup.js"
   },
-  "overrides": {
-    "vue": "latest",
-    "@parcel/watcher": "2.1.0"
+  "dependencies": {
+    "nuxt": "^4.2.0"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.13.4",
-    "@nuxt/ui": "^2.18.7",
-    "@nuxtjs/i18n": "^9.0.0",
-    "@pinia/nuxt": "^0.7.0",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.9",
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^22",
-    "nuxt": "^3.13.2",
-    "nuxt-gtag": "^3.0.1",
-    "pinia-plugin-persistedstate": "^4.1.2",
-    "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.8"
+    "@iconify-json/hugeicons": "^1.2.17",
+    "@iconify-json/lucide": "^1.2.72",
+    "@iconify-json/simple-icons": "^1.2.57",
+    "@iconify-json/svg-spinners": "^1.2.4",
+    "@iconify-json/twemoji": "^1.2.4",
+    "@nuxt/eslint": "^1.10.0",
+    "@nuxt/ui": "^4.1.0",
+    "eslint": "^9.39.1"
   }
 }

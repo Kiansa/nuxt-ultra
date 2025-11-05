@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Noto Sans', sans-serif;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
