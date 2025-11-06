@@ -483,7 +483,7 @@ async function updateNuxtConfig(selections) {
     )
   }
 
-  writeFileSync(nuxtConfigPath, nuxtConfig)
+  writeFileSync(resolve('./nuxt.config.ts'), nuxtConfig)
 }
 
 async function generateEnvFiles(selections) {
