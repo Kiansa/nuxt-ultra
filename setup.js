@@ -202,15 +202,17 @@ async function main() {
     await installPackages(selections)
 
     // prompt to delete template folder
-    const deleteTemplates = await consola.prompt('🧹 Do you want to delete `/templates` to clean up?', {
+    const deleteTemplates = await consola.prompt('🧹 Do you want to delete `./.nuxt_ultra` and `./setup.js` to clean up?', {
       type: 'confirm',
     })
 
     if (deleteTemplates) {
-      consola.start('Deleting templates folder...')
-      execSync(`rm -rf ./.nuxt_ultra`, { stdio: 'inherit' })
-      execSync(`rm -rf ./setup.js`, { stdio: 'inherit' })
-      consola.success('Templates folder deleted!')
+      consola.start('Removing nuxt_ultra folder...')
+      const isWindows = process.platform === 'win32'
+      const rmCommand = isWindows ? 'rmdir /s /q' : 'rm -rf'
+      execSync(`${rmCommand} ./.nuxt_ultra`, { stdio: 'inherit' })
+      execSync(`${rmCommand} ./setup.js`, { stdio: 'inherit' })
+      consola.success('nuxt_ultra folder deleted!')
     }
 
     consola.success('🎉 Setup complete!')
