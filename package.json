@@ -13,7 +13,7 @@
     "setup": "node setup.js"
   },
   "dependencies": {
-    "nuxt": "^4.2.0"
+    "nuxt": "^4.2.1"
   },
   "devDependencies": {
     "@iconify-json/hugeicons": "^1.2.17",
