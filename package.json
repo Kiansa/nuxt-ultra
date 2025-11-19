@@ -17,12 +17,12 @@
   },
   "devDependencies": {
     "@iconify-json/hugeicons": "^1.2.18",
-    "@iconify-json/lucide": "^1.2.72",
+    "@iconify-json/lucide": "^1.2.73",
     "@iconify-json/simple-icons": "^1.2.59",
     "@iconify-json/svg-spinners": "^1.2.4",
     "@iconify-json/twemoji": "^1.2.4",
     "@nuxt/eslint": "^1.10.0",
-    "@nuxt/ui": "^4.1.0",
+    "@nuxt/ui": "^4.2.0",
     "eslint": "^9.39.1"
   }
 }
