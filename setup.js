@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { execSync } from 'child_process'
-import { cpSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
+import { cpSync, readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'fs'
 import { resolve } from 'pathe'
 import { createConsola } from 'consola'
 
@@ -63,6 +63,7 @@ consola.info('This interactive setup will help you configure your project with t
 async function promptMultiSelect(message, choices) {
   const selectedIndexes = await consola.prompt(message, {
     type: 'multiselect',
+    required: false,
     options: choices.map(choice => ({
       label: choice.name,
       value: choice.value,
@@ -208,11 +209,25 @@ async function main() {
 
     if (deleteTemplates) {
       consola.start('Removing nuxt_ultra folder...')
-      const isWindows = process.platform === 'win32'
-      const rmCommand = isWindows ? 'rmdir /s /q' : 'rm -rf'
-      execSync(`${rmCommand} ./.nuxt_ultra`, { stdio: 'inherit' })
-      execSync(`${rmCommand} ./setup.js`, { stdio: 'inherit' })
-      consola.success('nuxt_ultra folder deleted!')
+      const templateDir = resolve('./.nuxt_ultra')
+      const setupScript = resolve('./setup.js')
+
+      try {
+        if (existsSync(templateDir))
+          rmSync(templateDir, { recursive: true, force: true })
+        consola.success('nuxt_ultra folder deleted!')
+      }
+      catch (error) {
+        consola.warn(`Could not delete nuxt_ultra folder automatically: ${error.message}`)
+      }
+
+      try {
+        if (existsSync(setupScript))
+          rmSync(setupScript, { force: true })
+      }
+      catch (error) {
+        consola.warn(`Could not delete setup.js automatically: ${error.message}`)
+      }
     }
 
     consola.success('🎉 Setup complete!')
