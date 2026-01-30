@@ -12,8 +12,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
-      siteName: process.env.NUXT_SITE_NAME,
+      siteUrl: '',
+      siteName: '',
     },
   },
 
@@ -32,9 +32,5 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
-  },
-
-  ogImage: {
-    zeroRuntime: true,
   },
 })

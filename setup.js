@@ -408,6 +408,19 @@ async function updateNuxtConfig(selections) {
       /%%i18nConfig%%/,
       'i18n: i18nConfig,',
     )
+  } else {
+    nuxtConfig = nuxtConfig.replace(
+      /%%i18nModule%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /\/\/ %%i18nImport%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /%%i18nConfig%%/,
+      '',
+    )
   }
 
   if (selections.features.includes('@nuxtjs/seo')) {
@@ -429,6 +442,23 @@ async function updateNuxtConfig(selections) {
       /%%siteName%%/,
       selections.info.siteName,
     )
+  } else {
+    nuxtConfig = nuxtConfig.replace(
+      /%%seoModule%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /%%ogImage%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /%%siteUrl%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /%%siteName%%/,
+      '',
+    )
   }
 
   if (selections.features.includes('@nuxtjs/supabase')) {
@@ -448,6 +478,15 @@ async function updateNuxtConfig(selections) {
     cookiePrefix: 'sb',
     types: '#shared/types/database.types.ts',
   },`,
+    )
+  } else {
+    nuxtConfig = nuxtConfig.replace(
+      /%%supabaseModule%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /%%supabaseConfig%%/,
+      '',
     )
   }
 
@@ -470,6 +509,15 @@ async function updateNuxtConfig(selections) {
         region: 'auto',
       },
     },`,
+    )
+  } else {
+    nuxtConfig = nuxtConfig.replace(
+      /%%R2%%/,
+      '',
+    )
+    nuxtConfig = nuxtConfig.replace(
+      /%%storageConfig%%/,
+      '',
     )
   }
 
@@ -495,6 +543,11 @@ async function updateNuxtConfig(selections) {
         },
       },
     },`,
+    )
+  } else {
+    nuxtConfig = nuxtConfig.replace(
+      /%%cloudflareConfig%%/,
+      '',
     )
   }
 
