@@ -70,11 +70,13 @@ yarn setup
 
 This will guide you through selecting optional features like:
 - 🌍 Internationalization (i18n)  
+- 📝 Nuxt SEO
 - 🗄️ Supabase Backend
 - 📝 Zod Schema Validation
 - 📊 Dashboard & Authentication
 - 🤖 AI Integration (OpenAI, xAI, Gemini, Claude)
 - 📁 Cloudflare R2 Storage
+- ☁️ Cloudflare Workers Deployment
 
 ## Development Server
 
