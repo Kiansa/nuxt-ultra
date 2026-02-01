@@ -401,7 +401,7 @@ async function updateNuxtConfig(selections) {
       '\'@nuxtjs/i18n\',',
     )
     nuxtConfig = nuxtConfig.replace(
-      /\/\/ %%i18nImport%%/,
+      /%%i18nImport%%/,
       'import i18nConfig from \'./i18n/i18n.config\'\n\n',
     )
     nuxtConfig = nuxtConfig.replace(
@@ -414,7 +414,7 @@ async function updateNuxtConfig(selections) {
       '',
     )
     nuxtConfig = nuxtConfig.replace(
-      /\/\/ %%i18nImport%%/,
+      /%%i18nImport%%/,
       '',
     )
     nuxtConfig = nuxtConfig.replace(

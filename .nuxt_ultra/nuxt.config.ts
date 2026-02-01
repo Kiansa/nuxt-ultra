@@ -21,7 +21,6 @@ export default defineNuxtConfig({
       siteName: '%%siteName%%',
     },
     %%R2%%
-    %%supabaseKeys%%
   },
 
   %%i18nConfig%%
