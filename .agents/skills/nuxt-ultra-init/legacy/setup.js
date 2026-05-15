@@ -490,6 +490,10 @@ async function updateNuxtConfig(selections) {
     )
   }
 
+  if (selections.features.includes('nuxt-postgrest')) {
+    
+  }
+
   if (selections.features.includes('cloudflare-r2')) {
     nuxtConfig = nuxtConfig.replace(
       /%%R2%%/,
@@ -578,6 +582,15 @@ async function generateEnvFiles(selections) {
     envVars['SUPABASE_PROJECT_ID'] = 'your_supabase_project_id'
   }
 
+  if (selections.features.includes('nuxt-postgrest')) {
+    envVars['NUXT_PUBLIC_POSTGREST_URL'] = 'your_postgrest_url'
+    envVars['NUXT_PUBLIC_POSTGREST_KEY'] = 'your_postgrest_anon_key'
+    envVars['NUXT_PUBLIC_POSTGREST_AUTH_PROVIDER'] = 'nuxt-auth-utils'
+    envVars['NUXT_POSTGREST_SECRET_KEY'] = 'your_postgrest_secret_key'
+    envVars['NUXT_POSTGREST_DB_URI'] = 'your_postgrest_db_uri'
+    envVars['NUXT_POSTGREST_DB_JWT'] = 'your_postgrest_db_jwt'
+  }
+
   if (selections.features.includes('ai')) {
     const aiProviders = selections['ai_method'] || []
     const providers = Array.isArray(aiProviders) ? aiProviders : [aiProviders]
@@ -609,14 +622,14 @@ async function generateEnvFiles(selections) {
   // Generate .env.local with additional PORT variable
   const envLocalVars = { ...envVars, PORT: selections.info.devPort }
   const envLocal = Object.entries(envLocalVars)
-    .map(([key, value]) => `${key}=${value}`)
+    .map(([key, value]) => `${key}="${value}"`)
     .join('\n')
 
   writeFileSync(resolve('./', '.env.local'), envLocal + '\n')
 
   // Generate .env.production template
   const envProduction = Object.entries(envVars)
-    .map(([key, value]) => `${key}=${key.includes('localhost') ? 'https://your-domain.com' : value}`)
+    .map(([key, value]) => `${key}="${key.includes('localhost') ? 'https://your-domain.com' : value}"`)
     .join('\n')
 
   writeFileSync(resolve('./', '.env.production'), envProduction + '\n')

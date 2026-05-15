@@ -1,6 +1,6 @@
 <div align='center'>
 <h1>Nuxt Ultra - Starter Template</h1>
-<img src='https://nuxt.com/assets/design-kit/icon-green.svg' alt='Nuxt3 Ultra - Opinionated Nuxt 3 Starter Template' width='344'/>
+<img src='https://nuxt.com/assets/design-kit/icon-green.svg' alt='Nuxt Ultra - Opinionated Nuxt 3 Starter Template' width='344'/>
 </div>
 
 <p align='center'>
@@ -25,7 +25,7 @@ Develop your next full stack web app with <b>Nuxt Ultra</b><br>
 - @nuxtjs/supabase - DB and Auth
 - @nuxtjs/i18n - Internationalization
 
-### Optional modules with pre configuration (via `npm run setup`)
+### Optional modules with pre configuration (via `nuxt-ultra-init` skill)
 
 Choose from these optional integrations:
 - **Internationalization** - Multi-language support
@@ -40,7 +40,22 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## Setup
 
-1. **Install dependencies:**
+**Interactive AI Setup:**
+
+Just ask the AI to "Init Nuxt Ultra" and it will guide you through an interactive setup process to customize your project with optional features and configurations.
+
+This will guide you through selecting optional features like:
+- 🌍 Internationalization (i18n)  
+- 📝 Nuxt SEO
+- 🗄️ Database
+- 📝 Validation
+- 📊 Dashboard 
+- 🔒 Authentication
+- 🤖 AI Integration (OpenAI, xAI, Gemini, Claude)
+- 📁 Storage
+- ☁️ Deployment
+
+## Install dependencies
 
 ```bash
 # npm
@@ -52,31 +67,6 @@ pnpm install
 # yarn
 yarn install
 ```
-
-2. **Interactive Setup:**
-
-Run the interactive setup to configure your project with the features you need:
-
-```bash
-# npm
-npm run setup
-
-# pnpm
-pnpm run setup
-
-# yarn
-yarn setup
-```
-
-This will guide you through selecting optional features like:
-- 🌍 Internationalization (i18n)  
-- 📝 Nuxt SEO
-- 🗄️ Supabase Backend
-- 📝 Zod Schema Validation
-- 📊 Dashboard & Authentication
-- 🤖 AI Integration (OpenAI, xAI, Gemini, Claude)
-- 📁 Cloudflare R2 Storage
-- ☁️ Cloudflare Workers Deployment
 
 ## Development Server
 

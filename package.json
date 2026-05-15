@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-ultra-supabase",
+  "name": "nuxt-ultra",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,16 +13,8 @@
     "setup": "node setup.js"
   },
   "dependencies": {
-    "nuxt": "^4.4.2"
+    "nuxt": "^4.4.5"
   },
   "devDependencies": {
-    "@iconify-json/hugeicons": "^1.2.26",
-    "@iconify-json/lucide": "^1.2.102",
-    "@iconify-json/simple-icons": "^1.2.78",
-    "@iconify-json/svg-spinners": "^1.2.4",
-    "@iconify-json/twemoji": "^1.2.5",
-    "@nuxt/eslint": "^1.15.2",
-    "@nuxt/ui": "^4.6.1",
-    "eslint": "^10.2.1"
   }
 }

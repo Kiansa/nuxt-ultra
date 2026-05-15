@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import * as locales from '@nuxt/ui/locale'
-
-const config = useRuntimeConfig()
-const colorMode = useColorMode()
-const route = useRoute()
-const color = computed(() => (colorMode.value === 'dark' ? '#18181B' : 'white'))
-
 // #region Cookie Consent Toast
 // const toast = useToast()
 
@@ -37,36 +30,15 @@ const color = computed(() => (colorMode.value === 'dark' ? '#18181B' : 'white'))
 //   })
 // })
 // #endregion
-useHead({
-  meta: [
-    { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { key: 'theme-color', name: 'theme-color', content: color },
-  ],
-  link: [{ rel: 'icon', href: '/favicon.ico' }],
-  htmlAttrs: {
-    lang: 'en',
-  },
-})
-const title = computed(() => (route.meta.title as string) || '')
-const description = computed(() => (route.meta.description as string) || '')
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title.value,
-  ogDescription: description.value,
-  ogImage: '/img/og.png',
-  twitterImage: '/img/og.png',
-  twitterCard: 'summary_large_image',
-})
+
 </script>
 
 <template>
-  <UApp>
+  <div>
     <NuxtLoadingIndicator />
 
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </UApp>
+  </div>
 </template>
