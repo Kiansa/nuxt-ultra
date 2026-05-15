@@ -398,3 +398,13 @@ NUXT_PGRST_SECRET_KEY=""
 NUXT_PGRST_DB_URI=""
 NUXT_PGRST_DB_JWT=""
 ```
+
+#### Path: package.json
+
+```json
+{
+  "scripts": {
+    "db": "npx -y dotenv -e .env.local -- powershell -Command \"npx -y supabase@latest gen types --lang=typescript --db-url $env:NUXT_PGRST_DB_URI --schema 'public,auth' | Out-File -FilePath './shared/types/db.types.ts' -Encoding utf8; if ($LASTEXITCODE -eq 0) { npm run lint:fix -- ./shared/types/db.types.ts }\""
+  }
+}
+```
