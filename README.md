@@ -1,156 +1,111 @@
-<div align='center'>
-<h1>Nuxt Ultra - Starter Template</h1>
-<img src='https://nuxt.com/assets/design-kit/icon-green.svg' alt='Nuxt Ultra - Opinionated Nuxt 3 Starter Template' width='344'/>
-</div>
-
-<p align='center'>
-Develop your next full stack web app with <b>Nuxt Ultra</b><br>
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="Nuxt Ultra: an agent skill that creates a Nuxt 4 project and turns it into an opinionated full-stack app from one prompt. A terminal shows the install command, the slash command and the generated files.">
 </p>
 
-## Modules
+Nuxt Ultra is not a template you clone. It is a [skill](https://skills.sh) for AI coding agents such as Claude Code, Cursor, Copilot and Codex. You install the skill once and ask the agent to run it. The agent asks which features you want, creates the project with `create nuxt`, resolves the dependencies between features, writes the files, installs packages and runs a typecheck.
 
-### This template comes with the following modules:
+Everything it generates is plain Nuxt code in your repository. There is no runtime dependency on this project and nothing to upgrade later.
 
-- @nuxt/ui - [Documentation](https://ui.nuxt.com/) 
-- @nuxt/eslint - [Documentation](https://eslint.nuxt.com/)
-- @nuxtjs/seo - [Documentation](https://nuxtseo.com/nuxt-seo/getting-started/installation)
-- @nuxtjs/supabase - [Documentation](https://supabase.nuxtjs.org/)
-- @nuxtjs/i18n - [Documentation](https://i18n.nuxtjs.org/)
+## Quickstart
 
-### Core Features
-
-- @nuxt/ui - Modern UI components
-- @nuxt/eslint - Code linting
-- @nuxtjs/seo - SEO optimization  
-- @nuxtjs/supabase - DB and Auth
-- @nuxtjs/i18n - Internationalization
-
-### Optional modules with pre configuration (via `nuxt-ultra-init` skill)
-
-Choose from these optional integrations:
-- **Internationalization** - Multi-language support
-- **Supabase** - Backend-as-a-Service with authentication
-- **Zod** - Schema validation
-- **Dashboard** - Admin interface with authentication
-- **AI Integration** - OpenAI, xAI, Gemini, or Claude
-- **Cloudflare R2** - Object storage
-- **Cloudflare Workers Deployment** - Easy deployment to Cloudflare Workers
-
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more about Nuxt.
-
-## Setup
-
-**Interactive AI Setup:**
-
-Just ask the AI to "Init Nuxt Ultra" and it will guide you through an interactive setup process to customize your project with optional features and configurations.
-
-This will guide you through selecting optional features like:
-- 🌍 Internationalization (i18n)  
-- 📝 Nuxt SEO
-- 🗄️ Database
-- 📝 Validation
-- 📊 Dashboard 
-- 🔒 Authentication
-- 🤖 AI Integration (OpenAI, xAI, Gemini, Claude)
-- 📁 Storage
-- ☁️ Deployment
-
-## Install dependencies
+Install the skill once, globally:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
+npx skills add Kiansa/nuxt-ultra -g
 ```
 
-## Development Server
+Then, from the folder where the project should live, tell your agent:
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
+```text
+/nuxt-ultra-init
 ```
 
-## Build for Production 
+The agent asks the setup questions (project name, package manager, features, deployment target), runs `pnpm create nuxt@latest` with the minimal template, applies your selection and reports every file it created and every command it ran. "Init Nuxt Ultra" works as well if your agent has no slash commands.
 
-Nitro config is already setup to handle most common cases by using hybrid rendering. for example:
-- if you use server folder it will build a server app and prerender the rest of the pages. (SSR + SSG).
-- if you don't use server folder it will build a static app by prerendering all the pages (SSG). the build command will be same as running `nuxt generate`.
+> [!TIP]
+> Run it inside an existing Nuxt project and the create step is skipped. Ask for "add Cloudflare R2 storage" or "add i18n" and only that feature's reference is applied.
 
-```bash
-# npm
-npm run build
+## Features
 
-# pnpm
-pnpm run build
+Every group is optional. Pick what you need; dependencies are added automatically and explained to you.
 
-# yarn
-yarn build
+| Group | Options |
+|---|---|
+| **UI** | [@nuxt/ui](https://ui.nuxt.com/) with a public shell (header, footer, home page) |
+| **Linter** | [@nuxt/eslint](https://eslint.nuxt.com/) with fix-on-save editor settings |
+| **Database** | [@nuxtjs/supabase](https://supabase.nuxtjs.org/), or `nuxt-postgrest`, a local module for any PostgREST endpoint with user-scoped JWTs for RLS |
+| **Auth** | Supabase Auth, or [nuxt-auth-utils](https://github.com/atinux/nuxt-auth-utils) with password + email OTP, reset links, remember-me and GitHub/Google OAuth |
+| **Dashboard** | User and/or admin dashboard built on Nuxt UI, at a route you choose or as the app root |
+| **i18n** | [@nuxtjs/i18n](https://i18n.nuxtjs.org/) with file-based or database-backed translations and RTL support |
+| **SEO** | [@nuxtjs/seo](https://nuxtseo.com/) with site config read from the environment |
+| **Validation** | [zod](https://zod.dev/) schemas shared between forms and server routes |
+| **AI** | Server-side clients for OpenAI, xAI, Gemini and Claude |
+| **Storage** | Cloudflare R2 over the S3 API, with public and private upload endpoints |
+| **Deployment** | Cloudflare Workers (with a bulk secrets script), Node or Vercel |
+
+### Dependency rules
+
+| If you select | You also get |
+|---|---|
+| Auth (either provider) | `@nuxt/ui` and `zod` |
+| Auth via Supabase | Database via Supabase |
+| Auth via `nuxt-auth-utils` | A database for the users table |
+| Dashboard | `@nuxt/ui` and an Auth provider |
+| i18n in remote mode | A database for translations |
+
+> [!NOTE]
+> `shadcn/nuxt`, `oxlint`, `prettier` and validation libraries other than zod are listed in the questions but not yet implemented. The agent will tell you and skip them.
+
+## What the generated app looks like
+
+The features share a small set of conventions so they compose cleanly:
+
+- **Environment files.** `npm run dev` reads `.env.local` and `npm run build` reads `.env.production`. Both are gitignored; `.env.example` is the committed template and every feature appends its keys to it.
+- **Route groups.** Signed-in pages live under `app/pages/(protected)/` and auth pages under `app/pages/(guest)/`. Nuxt exposes the folder names as `route.meta.groups`, which the auth middleware keys on. The folder never appears in the URL.
+- **One auth composable.** `useAuth()` exposes `user`, `loggedIn`, `displayName`, `avatar` and `logout` regardless of the provider, so the dashboard works with either.
+- **One database handle.** `useDb(event)` is the server-side admin client both database variants expose.
+- **Thin server routes.** Handlers validate with `readValidatedBody(event, schema.parse)` using schemas from `shared/utils/`, then call a helper from `server/utils/`.
+- **Generated types.** `shared/types/database.types.ts` is produced by `npm run db:types` through the Supabase CLI for either database variant.
+- **Bundled icons.** Icons come from `@iconify-json/*` packages, so nothing is fetched at runtime on edge hosts.
+
+## How it works
+
+<p align="center">
+  <img src="./assets/readme/workflow.svg" width="100%" alt="Five stages: ask setup questions, resolve feature dependencies, create the project and apply the baseline, apply features in a fixed order, then install and verify with nuxt typecheck.">
+</p>
+
+The skill is a `SKILL.md` plus one reference file per feature:
+
+```
+skills/nuxt-ultra-init/
+├── SKILL.md                 questions, create step, dependency rules, apply order, verification
+└── references/
+    ├── baseline.md          normalises the created project (always applied)
+    ├── feature-ui.md
+    ├── feature-nuxt-eslint.md
+    ├── feature-db.md
+    ├── feature-auth-supabase.md
+    ├── feature-auth-nuxt-auth-utils.md
+    ├── feature-dashboard.md
+    ├── feature-i18n.md
+    ├── feature-seo.md
+    ├── feature-validation.md
+    ├── feature-ai.md
+    ├── feature-storage.md
+    └── feature-deployment.md
 ```
 
-## Deployment
+Each reference is a sequence of `### Path: <file>` blocks the agent creates, or patches minimally if the file exists, and `### Path: terminal command` blocks it runs with your package manager. Features are applied in a fixed order (UI, Linter, DB, Auth, Dashboard, i18n, SEO, Validation, AI, Storage, Deployment) and `nuxt.config.ts` is written once with every feature's additions merged.
 
-### Cloudflare Workers (Default)
+The agent follows a few guardrails: it preserves unrelated changes, keeps runs idempotent, never writes secrets into files and never pins package versions. After installing it runs `nuxt prepare` and `nuxt typecheck` (plus `lint` when ESLint was selected) and fixes anything the setup broke.
 
-Make sure you have configured your Cloudflare wrangler config in `nuxt.config.ts` file.
-To deploy your Nuxt application to Cloudflare Workers, you can use the following command:
+> [!IMPORTANT]
+> Pair this skill with the official [`nuxt`](https://skills.sh) and [`nuxt-ui`](https://ui.nuxt.com/docs/getting-started/ai/skills) skills. Nuxt Ultra scaffolds the app; those give your agent framework and component guidance while you build on it.
 
-```bash
-# npm
-npm run deploy
+## Developing the skill
 
-# pnpm
-pnpm run deploy
+There is no build and nothing to run in this repository. To verify a change to a reference:
 
-# yarn
-yarn deploy
-```
-
-### How to deploy on modern hosting (Vercel, Netlify, etc.)
-
-Nuxt and Nitro support many modern hosting providers with zero configuration. 
-Look at the [Nuxt documentation](https://nuxt.com/deploy) to learn more about presets.
-
-### How to deploy on traditional hosting (Plesk, cPanel, etc.)
-
-1. Remove `nitro.preset : cloudflare-module` and `nitro.cloudflare` specific settings from `nuxt.config.ts` file.
-2. Uninstall `wrangler` package from your project by running `npm uninstall wrangler` or `yarn remove wrangler` or `pnpm remove wrangler`.
-3. follow the instructions below based on your rendering mode:
-
-#### SPA or SSG (Static Site Generation)
-
-After you run the `build` command, you will have a `.output` folder that contains `public`, `server` and a `nitro.json`. All you need is to copy the folders and files inside the `.output/public` and paste it in your domain directory to deploy your application.
-
-#### SSR (Server Side Rendering)
-
-After you run the `build` command, you will have a `.output` folder that contains `public`, `server` and a `nitro.json`. To deploy and run your application: 
-
-1. You need to enable node extension on your hosting and domain.
-2. Transfer `.output/**` folder to your domain directory.
-3. create a startup `index.js` or `main.js` or `entry.js` file in your domain directory along side with `public` and `server` directory with the following content:
-
-```js
-import('./.output/server/index.mjs');
-```
-
-4. configure node extension settings: 
-- set Application startup file to the file you created in step 3 e.g. `index.js` 
-- set `Document Root` to `./public` folder. (usually it's `/httpdocs/public` for top level domain)
-- set Application mode to `production`
-- set Application Root to your domain directory e.g. `/httpdocs`
-- Enable Node.js
-You don't need to `npm install` or `Run script` because all the dependencies are already bundled in the `.output/server` folder.
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+1. In a scratch directory, install the skill from your checkout with `npx skills add ./skills/nuxt-ultra-init`, or copy it into `.agents/skills/`.
+2. Run `/nuxt-ultra-init` there with the affected feature selected.
+3. Make sure `nuxt typecheck` passes in the created project.

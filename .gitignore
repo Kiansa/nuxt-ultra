@@ -1,25 +1,9 @@
-# Nuxt dev/build outputs
-.output
-.nuxt
-.nitro
-.cache
-dist
-
-# Node dependencies
+.DS_Store
 node_modules
-
-# Logs
-logs
 *.log
 
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# others
-jsondeepl
-
-# Local environment variables
-.env
-.env.*
+# Per-clone AI context
+CLAUDE.md
+.claude
+.agents
+skills-lock.json

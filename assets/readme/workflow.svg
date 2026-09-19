@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200" role="img" aria-labelledby="title desc">
+  <title id="title">How Nuxt Ultra runs</title>
+  <desc id="desc">Five stages: ask setup questions, resolve feature dependencies, create the project with create nuxt and apply the baseline, apply features in a fixed order, then install and verify with nuxt typecheck.</desc>
+
+  <rect width="1200" height="200" rx="20" fill="#020420"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00DC82"/>
+    </marker>
+  </defs>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif">
+    <g transform="translate(46 40)">
+      <rect width="196" height="120" rx="14" fill="#080D26" stroke="#1B2547"/>
+      <text x="18" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#00DC82">01</text>
+      <text x="18" y="56" font-size="22" font-weight="700" fill="#FFFFFF">Ask</text>
+      <text x="18" y="84" font-size="18" fill="#9FB0C8">package manager,</text>
+      <text x="18" y="106" font-size="18" fill="#9FB0C8">features, target</text>
+    </g>
+    <line x1="244" y1="100" x2="272" y2="100" stroke="#00DC82" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(274 40)">
+      <rect width="196" height="120" rx="14" fill="#080D26" stroke="#1B2547"/>
+      <text x="18" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#00DC82">02</text>
+      <text x="18" y="56" font-size="22" font-weight="700" fill="#FFFFFF">Resolve</text>
+      <text x="18" y="84" font-size="18" fill="#9FB0C8">auto-add what a</text>
+      <text x="18" y="106" font-size="18" fill="#9FB0C8">feature depends on</text>
+    </g>
+    <line x1="472" y1="100" x2="500" y2="100" stroke="#00DC82" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(502 40)">
+      <rect width="196" height="120" rx="14" fill="#080D26" stroke="#1B2547"/>
+      <text x="18" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#00DC82">03</text>
+      <text x="18" y="56" font-size="22" font-weight="700" fill="#FFFFFF">Create</text>
+      <text x="18" y="84" font-size="18" fill="#9FB0C8">create nuxt, then</text>
+      <text x="18" y="106" font-size="18" fill="#9FB0C8">baseline env + scripts</text>
+    </g>
+    <line x1="700" y1="100" x2="728" y2="100" stroke="#00DC82" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(730 40)">
+      <rect width="196" height="120" rx="14" fill="#080D26" stroke="#00DC82" stroke-opacity="0.6"/>
+      <text x="18" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#00DC82">04</text>
+      <text x="18" y="56" font-size="22" font-weight="700" fill="#FFFFFF">Apply features</text>
+      <text x="18" y="84" font-size="18" fill="#9FB0C8">UI → DB → Auth →</text>
+      <text x="18" y="106" font-size="18" fill="#9FB0C8">… → Deployment</text>
+    </g>
+    <line x1="928" y1="100" x2="956" y2="100" stroke="#00DC82" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(958 40)">
+      <rect width="196" height="120" rx="14" fill="#080D26" stroke="#1B2547"/>
+      <text x="18" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#00DC82">05</text>
+      <text x="18" y="56" font-size="22" font-weight="700" fill="#FFFFFF">Verify</text>
+      <text x="18" y="84" font-size="18" fill="#9FB0C8">install, prepare,</text>
+      <text x="18" y="106" font-size="18" fill="#9FB0C8">nuxt typecheck</text>
+    </g>
+  </g>
+</svg>
