@@ -1,6 +1,6 @@
 ---
 name: nuxt-ultra-init
-description: Create a Nuxt 4 project with `create nuxt` and turn it into an opinionated full-stack app through a guided setup: Nuxt UI, ESLint, Supabase or PostgREST, auth (Supabase or nuxt-auth-utils), dashboards, i18n, SEO, zod, AI clients, Cloudflare R2 and deployment. Use when the user runs /nuxt-ultra-init, says "Init Nuxt Ultra", or asks to add one of these features to an existing Nuxt project.
+description: Create a Nuxt 4 project with `create nuxt` and turn it into an opinionated full-stack app through a guided setup covering Nuxt UI, ESLint, Supabase or PostgREST, auth (Supabase or nuxt-auth-utils), dashboards, i18n, SEO, zod, AI clients, Cloudflare R2 and deployment. Use when the user runs /nuxt-ultra-init, says "Init Nuxt Ultra", or asks to add one of these features to an existing Nuxt project.
 ---
 
 # Nuxt Ultra Init
